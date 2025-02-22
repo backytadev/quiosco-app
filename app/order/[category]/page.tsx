@@ -24,9 +24,9 @@ const cachedGetProducts = unstable_cache(getProducts, ["products"], {
 export default async function OrderPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const { category } = await params;
+  const category = (await params).category;
 
   const products = await cachedGetProducts(category);
 
