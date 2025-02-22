@@ -37,7 +37,7 @@ export default function ProductoSearchForm() {
 
       <input
         type="submit"
-        className="bg-indigo-600 p-2 uppercase text-white cursor-pointer"
+        className="bg-indigo-600 hover:bg-indigo-700 p-2 uppercase text-white cursor-pointer transition-colors duration-300 ease-in-out"
         value={"Buscar"}
       />
     </form>

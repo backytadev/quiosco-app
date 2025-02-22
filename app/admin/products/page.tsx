@@ -56,7 +56,7 @@ export default async function ProductsPage({
       <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
         <Link
           href={`/admin/products/new`}
-          className="bg-amber-400 w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
+          className="bg-amber-400 hover:bg-amber-500 transition-colors duration-300 ease-in-out w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
         >
           Crear Producto
         </Link>

@@ -38,7 +38,7 @@ export default async function Orders() {
         <input
           type="submit"
           value={"Actualizar Ordenes"}
-          className="bg-amber-400 w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
+          className="bg-amber-400 hover:bg-amber-500 transition-colors duration-300 ease-in-out w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
         />
       </form>
 
