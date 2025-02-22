@@ -24,6 +24,9 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
       uploadPreset="preset-next-quiosco"
       options={{
         maxFiles: 1,
+        maxFileSize: 5000000,
+        folder: "quiosco-images",
+        clientAllowedFormats: ["jpg", "jpeg", "png", "webp"],
       }}
     >
       {({ open }) => (
