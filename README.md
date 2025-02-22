@@ -1,4 +1,4 @@
-<p align="center" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center;">
+<p align="center" style="display: flex; flex-wrap: wrap; gap: 50px; justify-content: center; align-items: center;">
   <a href="https://nextjs.org/" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" width="220" alt="Next.js Logo" />
   </a>
