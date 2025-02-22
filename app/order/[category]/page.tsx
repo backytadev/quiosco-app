@@ -1,5 +1,3 @@
-import { unstable_cache } from "next/cache";
-
 import { prisma } from "@/src/lib/prisma";
 
 import Heading from "@/components/ui/Heading";
@@ -17,10 +15,6 @@ async function getProducts(category: string) {
   return products;
 }
 
-const cachedGetProducts = unstable_cache(getProducts, ["products"], {
-  revalidate: 60,
-});
-
 export default async function OrderPage({
   params,
 }: {
@@ -28,7 +22,7 @@ export default async function OrderPage({
 }) {
   const category = (await params).category;
 
-  const products = await cachedGetProducts(category);
+  const products = await getProducts(category);
 
   return (
     <>

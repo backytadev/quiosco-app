@@ -1,5 +1,6 @@
 "use client";
 
+// TODO : arreglar cache en tienda al crear no hace denuevo el cache y trae el nuevo producto
 import { useState } from "react";
 
 import Image from "next/image";
@@ -41,7 +42,7 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
               <p className="text-lg font-semibold">Agregar Imagen</p>
 
               {imageUrl && (
-                <div className="absolute inset-0 w-full h-full">
+                <div className="absolute bg-white inset-0 w-full h-full">
                   <Image
                     src={imageUrl}
                     alt="Imagen del producto"
