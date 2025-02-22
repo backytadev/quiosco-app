@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center;">
+  <a href="https://nextjs.org/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" width="220" alt="Next.js Logo" />
+  </a>
+  <a href="https://www.prisma.io/" target="_blank">
+    <img src="https://cdn.worldvectorlogo.com/logos/prisma-2.svg" width="200" alt="Prisma ORM Logo" />
+  </a>
+  <a href="https://tailwindcss.com/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" width="150" alt="Tailwind CSS Logo" />
+  </a>
+</p>
 
-## Getting Started
+# QUIOSCO-APP
 
-First, run the development server:
+In this project, a sales, kitchen and customer interface was developed for a fast food kiosk, the following technologies are used:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- NextJS
+- Prisma ORM
+- Docker
+- SWR
+- Zustand
+- React Toastify
+- Tailwind
+- Zod, etc
+
+## Installation and Run Locally
+
+Install my-project with npm or pnpm
+
+1. Clone the project
+2. Install dependencies
+
+```
+npm i or pnpm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Clone the `.env.template` and change it to `.env` and configure its environment variables.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Raise the server dev mode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+npm run dev or pnpm run dev
+```
 
-## Learn More
+5. Rebuild the database in development mode with the seed
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+ pnpm prisma db seed or npx prisma db seed
+```

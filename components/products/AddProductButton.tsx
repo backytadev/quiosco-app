@@ -1,7 +1,7 @@
 "use client";
 
-import { useStore } from "@/src/store/store";
 import { Product } from "@prisma/client";
+import { useStore } from "@/src/store/store";
 
 type AddProductButtonProps = {
   product: Product;

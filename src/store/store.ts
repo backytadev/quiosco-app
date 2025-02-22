@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { create } from "zustand";
-import { OrderItem } from "../types";
+import { OrderItem } from "@/src/types";
 import { Product } from "@prisma/client";
 
 interface Store {

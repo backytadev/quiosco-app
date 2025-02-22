@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
-
-import { useStore } from "@/src/store/store";
-import ProductoDetails from "./ProductoDetails";
-import { createOrder } from "@/actions/create-order-action";
-import { orderSchema } from "@/src/schema";
 import { toast } from "react-toastify";
+
+import { OrderSchema } from "@/src/schema";
+import { useStore } from "@/src/store/store";
+
+import { createOrder } from "@/actions/create-order-action";
+import ProductoDetails from "@/components/order/ProductoDetails";
 
 export default function OrderSummary() {
   const order = useStore((state) => state.order);
@@ -25,7 +26,7 @@ export default function OrderSummary() {
     };
 
     //* Client validation
-    const result = orderSchema.safeParse(data);
+    const result = OrderSchema.safeParse(data);
     if (!result.success) {
       result.error.issues.forEach((issue) => toast.error(issue.message));
       return;
@@ -56,7 +57,7 @@ export default function OrderSummary() {
       )}
 
       <p className="text-2xl mt-20 text-center">
-        Total a pagar: <span className="font-bold">{total}</span>
+        Total a pagar: <span className="font-bold">{total.toFixed(2)}</span>
       </p>
 
       <form className="w-full mt-10 space-y-5" action={handleCreateOrder}>

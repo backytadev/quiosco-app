@@ -1,10 +1,10 @@
 "use server";
 
 import { prisma } from "@/src/lib/prisma";
-import { orderSchema } from "@/src/schema";
+import { OrderSchema } from "@/src/schema";
 
 export async function createOrder(data: unknown) {
-  const result = orderSchema.safeParse(data);
+  const result = OrderSchema.safeParse(data);
   if (!result.success) {
     return {
       errors: result.error.issues,

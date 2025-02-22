@@ -1,8 +1,10 @@
+import { useMemo } from "react";
+
 import { PlusIcon, MinusIcon, XCircleIcon } from "@heroicons/react/20/solid";
+
 import { OrderItem } from "@/src/types";
 import { formatCurrency } from "@/src/utils";
 import { useStore } from "@/src/store/store";
-import { useMemo } from "react";
 
 type ProductoDetailsProps = {
   item: OrderItem;

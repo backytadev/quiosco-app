@@ -1,20 +1,38 @@
+import { PrismaClient } from "@prisma/client";
 import { categories } from "./data/categories";
 import { products } from "./data/products";
-import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 async function main() {
   try {
-    await prisma.category.createMany({
-      data: categories,
-    });
+    console.log("🔄 Limpiando base de datos...");
 
-    await prisma.product.createMany({
-      data: products,
-    });
+    await prisma.$transaction([
+      prisma.orderProducts.deleteMany(),
+      prisma.order.deleteMany(),
+      prisma.product.deleteMany(),
+      prisma.category.deleteMany(),
+    ]);
+
+    // Reiniciar los IDs autoincrementales (PostgreSQL)
+    await prisma.$executeRawUnsafe(
+      `ALTER SEQUENCE "Category_id_seq" RESTART WITH 1`
+    );
+    await prisma.$executeRawUnsafe(
+      `ALTER SEQUENCE "Product_id_seq" RESTART WITH 1`
+    );
+
+    // Insertar nuevos datos
+    console.log("🌱 Insertando datos...");
+    await prisma.category.createMany({ data: categories });
+    await prisma.product.createMany({ data: products });
+
+    console.log("✅ Seed ejecutado correctamente.");
   } catch (error) {
-    console.log(error);
+    console.error("❌ Error en el seed:", error);
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
@@ -23,7 +41,7 @@ main()
     await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.log(e);
+    console.error(e);
     await prisma.$disconnect();
     process.exit(1);
   });
