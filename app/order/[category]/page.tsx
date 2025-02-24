@@ -17,7 +17,11 @@ interface ProductResultProps {
 const fetchProducts = async (category: string) => {
   const res = await fetch(`/order/${category}/api`);
   if (!res.ok) throw new Error("Error al obtener productos");
-  return res.json();
+  const data = await res.json();
+
+  return data.sort(
+    (a: ProductResultProps, b: ProductResultProps) => a.id - b.id
+  );
 };
 
 export default function OrderPage() {
