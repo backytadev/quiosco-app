@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quiosco Next.js con App Router y Prisma",
-  description: "Quiosco Next.js con App Router y Prisma",
+  title: "Quiosco Fresh Coffee - App",
+  description: "Quiosco de comida rápida y postres + Punto de venta.",
 };
 
 export default function RootLayout({
@@ -27,6 +27,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
+      <head>
+        <link
+          rel="icon"
+          type="image/svg"
+          sizes="32x32"
+          href="/logo-light.svg"
+        />
+        <link rel="icon" type="image/sv" sizes="16x16" href="/logo-light.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
