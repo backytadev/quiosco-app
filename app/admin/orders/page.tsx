@@ -1,57 +1,89 @@
-import { revalidatePath } from "next/cache";
+"use client";
 
-import { prisma } from "@/src/lib/prisma";
+import { useEffect } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+
+import { OrderWithProducts } from "@/src/types";
 
 import Heading from "@/components/ui/Heading";
 import OrderCards from "@/components/order/OrderCards";
 
-async function getPendingOrders() {
-  const orders = await prisma.order.findMany({
-    where: {
-      status: false,
-    },
-    include: {
-      orderProducts: {
-        include: {
-          product: true,
-        },
-      },
-    },
+const fetchPendingOrders = async () => {
+  const res = await fetch(`/admin/orders/api`);
+  if (!res.ok) throw new Error("Error al obtener ordenes.");
+  return res.json();
+};
+
+export default function Orders() {
+  const {
+    data: orders,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["orders"],
+    queryFn: fetchPendingOrders,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    staleTime: 0,
   });
 
-  return orders;
-}
+  const queryClient = useQueryClient();
 
-export default async function Orders() {
-  const orders = await getPendingOrders();
-
-  const refreshOrders = async () => {
-    "use server";
-    revalidatePath("/admin/orders");
+  const handleRefresh = () => {
+    queryClient.invalidateQueries({ queryKey: ["orders"] });
   };
 
-  return (
-    <>
-      <Heading>Administrar ordenes.</Heading>
+  useEffect(() => {
+    const handleFocus = () => {
+      queryClient.refetchQueries({ queryKey: ["orders"] });
+    };
 
-      <form action={refreshOrders}>
-        <input
+    window.addEventListener("focus", handleFocus);
+    return () => window.removeEventListener("focus", handleFocus);
+  });
+
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center justify-center py-8">
+        <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
+        <p className="text-center text-xl font-bold italic mt-4">
+          Cargando órdenes...
+        </p>
+      </div>
+    );
+
+  if (error)
+    return (
+      <p className="text-center py-8 text-xl font-bold italic text-red-500">
+        Error al cargar órdenes.
+      </p>
+    );
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-black dark:text-white flex flex-col items-center py-10">
+      <Heading>Administrar órdenes</Heading>
+
+      <form className="mt-5" action={handleRefresh}>
+        <button
           type="submit"
-          value={"Actualizar Ordenes"}
-          className="bg-amber-400 hover:bg-amber-500 transition-colors duration-300 ease-in-out w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
-        />
+          className="bg-amber-500 hover:bg-amber-600 text-white text-lg font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-4 focus:ring-amber-300 dark:focus:ring-amber-600"
+        >
+          Actualizar Órdenes
+        </button>
       </form>
 
-      {orders.length ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5">
-          {orders.map((order) => (
+      {orders?.length ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-6 mt-8 w-full max-w-6xl px-4 md:px-8">
+          {orders.map((order: OrderWithProducts) => (
             <OrderCards key={order.id} order={order} />
           ))}
         </div>
       ) : (
-        <p className="text-center">No hay ordenes pendientes</p>
+        <p className="text-center mt-10 text-lg text-gray-700 dark:text-gray-300">
+          No hay órdenes pendientes
+        </p>
       )}
-    </>
+    </div>
   );
 }
 

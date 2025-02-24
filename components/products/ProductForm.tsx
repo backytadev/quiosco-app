@@ -17,44 +17,66 @@ export default async function ProductForm({ product }: ProductFormProps) {
   return (
     <>
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="name">
+        <label
+          className="text-gray-700 dark:text-gray-200 font-semibold text-sm"
+          htmlFor="name"
+        >
           Nombre:
         </label>
         <input
           id="name"
           type="text"
           name="name"
-          className="block w-full p-3 bg-slate-100"
-          placeholder="Nombre Producto"
+          required
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
+          placeholder-gray-500 dark:placeholder-gray-400"
+          placeholder="Nombre del Producto"
           defaultValue={product?.name}
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="price">
+        <label
+          className="text-gray-700 dark:text-gray-200 font-semibold text-sm"
+          htmlFor="price"
+        >
           Precio:
         </label>
         <input
           id="price"
+          type="number"
           name="price"
-          className="block w-full p-3 bg-slate-100"
-          placeholder="Precio Producto"
+          required
+          min="0"
+          step="0.01"
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
+          placeholder-gray-500 dark:placeholder-gray-400"
+          placeholder="Precio del Producto"
           defaultValue={product?.price}
         />
       </div>
 
       <div className="space-y-2">
-        <label className="text-slate-800" htmlFor="categoryId">
+        <label
+          className="text-gray-700 dark:text-gray-200 font-semibold text-sm"
+          htmlFor="categoryId"
+        >
           Categoría:
         </label>
         <select
-          className="block w-full p-3 bg-slate-100"
           id="categoryId"
           name="categoryId"
-          defaultValue={product?.categoryId}
+          required
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
+          placeholder-gray-500 dark:placeholder-gray-400"
+          defaultValue={product?.categoryId || ""}
         >
-          <option value="">-- Seleccione --</option>
-
+          <option value="" disabled>
+            -- Seleccione --
+          </option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}

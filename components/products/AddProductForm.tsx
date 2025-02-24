@@ -44,14 +44,18 @@ export default function AddProductForm({
   };
 
   return (
-    <div className="bg-white mt-10 px-5 py-10 rounded-md shadow-md max-w-3xl mx-auto">
-      <form className="space-y-5" action={handleSubmit}>
+    <div className="bg-white dark:bg-gray-800 mt-10 px-6 py-8 rounded-2xl shadow-xl dark:shadow-md max-w-3xl mx-auto transition-all duration-300">
+      <form className="space-y-6 w-full" action={handleSubmit}>
+        <p className="text-center font-bold text-2xl">Formulario de Registro</p>
         {children}
 
         <input
           type="submit"
-          className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
-          value={"Registrar Producto"}
+          className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 
+      uppercase font-bold cursor-pointer transition-all duration-300 ease-in-out 
+      rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 
+      disabled:opacity-50 disabled:cursor-not-allowed"
+          value="Registrar Producto"
         />
       </form>
     </div>

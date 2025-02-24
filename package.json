@@ -14,6 +14,8 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.4.0",
+    "@tanstack/react-query": "^5.66.9",
+    "@tanstack/react-query-devtools": "^5.66.9",
     "next": "15.1.7",
     "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tanstack/eslint-plugin-query": "^5.66.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

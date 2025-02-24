@@ -53,10 +53,11 @@ export default async function ProductsPage({
   return (
     <>
       <Heading>Administrar Productos</Heading>
-      <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
+
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 border dark:border-slate-700 mt-5 bg-slate-50 dark:bg-gray-800 p-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
         <Link
           href={`/admin/products/new`}
-          className="bg-amber-400 hover:bg-amber-500 transition-colors duration-300 ease-in-out w-full lg:w-auto text-center text-xl px-10 py-3 font-bold cursor-pointer"
+          className="bg-amber-500 hover:bg-amber-600 text-white text-xl px-10 py-3 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-full lg:w-auto text-center"
         >
           Crear Producto
         </Link>
@@ -64,9 +65,13 @@ export default async function ProductsPage({
         <ProductoSearchForm />
       </div>
 
-      <ProductTable products={products} />
+      <div className="mt-6 bg-gray-50 dark:bg-gray-800 border dark:border-slate-700 px-5 pb-5 pt-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+        <ProductTable products={products} />
+      </div>
 
-      <ProductsPagination page={page} totalPages={totalPages} />
+      <div className="mt-6 flex justify-center">
+        <ProductsPagination page={page} totalPages={totalPages} />
+      </div>
     </>
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-// TODO : arreglar cache en tienda al crear no hace denuevo el cache y trae el nuevo producto
 import { useState } from "react";
 
 import Image from "next/image";
@@ -31,37 +30,46 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
       }}
     >
       {({ open }) => (
-        <>
-          <div className="space-y-2">
-            <label className="text-slate-800">Imagen Producto</label>
-            <div
-              onClick={() => open()}
-              className="relative cursor-pointer hover:opacity-70 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 gb-salte-100"
-            >
-              <TbPhotoPlus size={50} />
-              <p className="text-lg font-semibold">Agregar Imagen</p>
+        <div className="space-y-4">
+          <label className="block text-lg font-semibold text-slate-800 dark:text-white">
+            Imagen del Producto
+          </label>
 
-              {imageUrl && (
-                <div className="absolute bg-white inset-0 w-full h-full">
-                  <Image
-                    src={imageUrl}
-                    alt="Imagen del producto"
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-              )}
-            </div>
+          <div
+            onClick={() => open()}
+            className="relative cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out p-6 
+            border-2 border-dashed border-gray-300 dark:border-gray-700 
+            flex flex-col justify-center items-center gap-3 text-gray-600 dark:text-gray-300
+            bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:ring-2 hover:ring-indigo-500"
+          >
+            <TbPhotoPlus
+              size={50}
+              className="text-indigo-600 dark:text-indigo-400"
+            />
+            <p className="text-lg font-medium">Agregar Imagen</p>
+
+            {imageUrl && (
+              <div className="absolute inset-0 w-full h-full rounded-lg overflow-hidden dark:bg-slate-800 bg-slate-50">
+                <Image
+                  src={imageUrl}
+                  alt="Imagen del producto"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            )}
           </div>
 
           {image && !imageUrl && (
-            <div>
-              <label htmlFor="">Imagen Actual: </label>
-              <div className="relative w-64 h-64">
+            <div className="mt-4">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                Imagen Actual:
+              </p>
+              <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md border border-gray-300 dark:border-gray-700">
                 <Image
                   fill
                   src={getImagePath(image)}
-                  alt="Imagen Producto"
+                  alt="Imagen del producto"
                   style={{ objectFit: "contain" }}
                 />
               </div>
@@ -73,7 +81,7 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
             name="image"
             defaultValue={imageUrl ? imageUrl : image}
           />
-        </>
+        </div>
       )}
     </CldUploadWidget>
   );

@@ -43,35 +43,42 @@ export default function OrderSummary() {
   };
 
   return (
-    <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
-      <h1 className="text-4xl text-center font-black">Mi Pedido</h1>
+    <aside className="lg:h-screen lg:overflow-y-auto md:w-64 lg:w-96 p-6 bg-white dark:bg-slate-900 shadow-lg rounded-lg">
+      <h1 className="text-4xl text-center font-black text-slate-800 dark:text-white">
+        Mi Pedido
+      </h1>
 
       {order.length === 0 ? (
-        <p className="text-center my-10">El pedido esta vació.</p>
+        <p className="text-center my-10 text-gray-500 dark:text-gray-400">
+          El pedido está vacío.
+        </p>
       ) : (
-        <div className="mt-5">
+        <div className="mt-6 space-y-4">
           {order.map((item) => (
             <ProductoDetails key={item.id} item={item} />
           ))}
         </div>
       )}
 
-      <p className="text-2xl mt-20 text-center">
-        Total a pagar: <span className="font-bold">{total.toFixed(2)}</span>
+      <p className="text-2xl mt-12 text-center text-gray-700 dark:text-gray-300">
+        Total a pagar:{" "}
+        <span className="font-bold text-slate-900 dark:text-white">
+          {total.toFixed(2)}
+        </span>
       </p>
 
-      <form className="w-full mt-10 space-y-5" action={handleCreateOrder}>
+      <form className="w-full mt-8 space-y-5" action={handleCreateOrder}>
         <input
           type="text"
           placeholder="Tu nombre"
-          className="bg-white border border-gray-100 p-2 w-full"
+          className="bg-gray-100 dark:bg-slate-800 border border-gray-300 dark:border-gray-700 p-3 w-full rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 transition-all"
           name="name"
         />
 
         <input
           type="submit"
-          className="py-2 rounded uppercase text-white bg-slate-900 hover:bg-slate-950 transition-colors duration-300 ease-in-out w-full text-center cursor-pointer font-bold"
-          value={"Confirmar Pedido"}
+          className="py-3 rounded-md uppercase text-white bg-amber-500 hover:bg-amber-600 dark:bg-amber-400 hover:dark:bg-amber-500 transition-all duration-300 ease-in-out w-full text-center cursor-pointer font-bold shadow-md"
+          value="Confirmar Pedido"
         />
       </form>
     </aside>

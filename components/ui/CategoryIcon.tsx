@@ -13,18 +13,29 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
   const params = useParams<{ category: string }>();
   const selectedCategory = params.category;
 
+  const isSelected = category.slug === selectedCategory;
+
   return (
-    <Link href={`/order/${category.slug}`} className="text-xl font-bold">
+    <Link href={`/order/${category.slug}`} className="block">
       <div
-        className={`${
-          category.slug === selectedCategory ? "bg-amber-400" : ""
-        } flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
+        className={`flex items-center gap-4 p-3 rounded-lg transition-all duration-300 
+        border border-gray-300 dark:border-gray-700 
+        ${
+          isSelected
+            ? "bg-amber-500 dark:bg-amber-600 text-white"
+            : "hover:bg-indigo-100 dark:hover:bg-indigo-800"
+        } `}
       >
-        <div className="w-16 h-16 relative">
-          <Image src={`/icon_${category.slug}.svg`} alt={category.name} fill />
+        <div className="w-14 h-14 relative">
+          <Image
+            src={`/icon_${category.slug}.svg`}
+            alt={category.name}
+            fill
+            className="object-contain"
+          />
         </div>
 
-        {category.name}
+        <span className="text-lg font-semibold">{category.name}</span>
       </div>
     </Link>
   );
