@@ -31,16 +31,16 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
     >
       {({ open }) => (
         <div className="space-y-4">
-          <label className="block text-lg font-semibold text-slate-800 dark:text-white">
+          <label className="block text-lg font-semibold text-slate-700 dark:text-white">
             Imagen del Producto
           </label>
 
           <div
             onClick={() => open()}
             className="relative cursor-pointer hover:opacity-80 transition-all duration-300 ease-in-out p-6 
-            border-2 border-dashed border-gray-300 dark:border-gray-700 
+            border-2 border-dashed border-gray-300 dark:border-gray-800 
             flex flex-col justify-center items-center gap-3 text-gray-600 dark:text-gray-300
-            bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md hover:ring-2 hover:ring-indigo-500"
+            bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md hover:ring-2 hover:ring-indigo-500"
           >
             <TbPhotoPlus
               size={50}

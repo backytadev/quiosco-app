@@ -35,7 +35,9 @@ export default function CategoryIcon({ category }: CategoryIconProps) {
           />
         </div>
 
-        <span className="text-lg font-semibold">{category.name}</span>
+        <span className="text-lg font-semibold text-black dark:text-white">
+          {category.name}
+        </span>
       </div>
     </Link>
   );

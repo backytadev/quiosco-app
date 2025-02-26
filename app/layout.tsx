@@ -34,7 +34,12 @@ export default function RootLayout({
           sizes="32x32"
           href="/logo-light.svg"
         />
-        <link rel="icon" type="image/sv" sizes="16x16" href="/logo-light.svg" />
+        <link
+          rel="icon"
+          type="image/svg"
+          sizes="16x16"
+          href="/logo-light.svg"
+        />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>

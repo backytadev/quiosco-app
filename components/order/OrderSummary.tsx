@@ -43,8 +43,8 @@ export default function OrderSummary() {
   };
 
   return (
-    <aside className="lg:h-screen lg:overflow-y-auto md:w-64 lg:w-96 p-6 bg-white dark:bg-slate-900 shadow-lg rounded-lg">
-      <h1 className="text-4xl text-center font-black text-slate-800 dark:text-white">
+    <aside className="h-auto lg:h-auto lg:overflow-y-auto md:w-64 lg:w-96 p-6 bg-slate-50 dark:bg-slate-900 shadow-md dark:shadow-slate-700 rounded-lg">
+      <h1 className="text-4xl text-center font-black text-slate-800 dark:text-white z-50">
         Mi Pedido
       </h1>
 

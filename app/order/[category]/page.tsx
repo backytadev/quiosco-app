@@ -62,7 +62,7 @@ export default function OrderPage() {
       <div className="relative">
         <div
           className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 items-start
-         px-4 pb-4"
+         px-0 pb-4"
         >
           {products?.map((product: ProductResultProps) => (
             <div key={product.id} className="snap-start">

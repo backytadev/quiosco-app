@@ -31,7 +31,9 @@ export default async function EditProductPage({
 
   return (
     <>
-      <Heading>Editar Producto: {product.name}</Heading>
+      <div className="mt-1 md:mt-5 lg:mt-10">
+        <Heading>Editar Producto: {product.name}</Heading>
+      </div>
 
       <GoBackButton />
 

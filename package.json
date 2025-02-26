@@ -16,6 +16,7 @@
     "@prisma/client": "^6.4.0",
     "@tanstack/react-query": "^5.66.9",
     "@tanstack/react-query-devtools": "^5.66.9",
+    "lucide-react": "^0.476.0",
     "next": "15.1.7",
     "next-cloudinary": "^6.16.0",
     "react": "^19.0.0",

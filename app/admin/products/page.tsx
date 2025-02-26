@@ -51,27 +51,31 @@ export default async function ProductsPage({
   if (page > totalPages) redirect("/admin/products?page=1");
 
   return (
-    <>
-      <Heading>Administrar Productos</Heading>
+    <div className="space-y-6">
+      <div className="mt-1 md:mt-5 lg:mt-10">
+        <Heading>Administrar Productos</Heading>
+      </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 border dark:border-slate-700 mt-5 bg-slate-50 dark:bg-gray-800 p-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div className="grid gap-4 md:flex md:items-center md:justify-between border dark:border-slate-700 bg-slate-50 dark:bg-gray-800 p-4 rounded-lg shadow-md">
         <Link
           href={`/admin/products/new`}
-          className="bg-amber-500 hover:bg-amber-600 text-white text-xl px-10 py-3 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 w-full lg:w-auto text-center"
+          className="bg-amber-500 hover:bg-amber-600 text-white text-lg px-6 py-2 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center md:w-auto"
         >
           Crear Producto
         </Link>
 
-        <ProductoSearchForm />
+        <div className="w-full md:w-auto">
+          <ProductoSearchForm />
+        </div>
       </div>
 
-      <div className="mt-6 bg-gray-50 dark:bg-gray-800 border dark:border-slate-700 px-5 pb-5 pt-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div className="bg-gray-50 dark:bg-gray-800 border dark:border-slate-700 p-4 rounded-lg shadow-md">
         <ProductTable products={products} />
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="flex justify-center">
         <ProductsPagination page={page} totalPages={totalPages} />
       </div>
-    </>
+    </div>
   );
 }

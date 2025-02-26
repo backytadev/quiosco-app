@@ -45,7 +45,7 @@ export default function OrdersPage() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col items-center justify-center py-8">
+      <div className="flex flex-col items-center justify-center py-14">
         <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
         <p className="text-center text-xl font-bold italic mt-4">
           Cargando órdenes listas...
@@ -63,8 +63,13 @@ export default function OrdersPage() {
   if (completedOrders)
     return (
       <>
-        <div className="fixed top-4 right-4 z-50">
-          <ThemeToggle />
+        <div
+          className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 
+        backdrop-blur-md shadow-md md:shadow-none border-b md:border-none border-gray-200 dark:border-gray-800"
+        >
+          <div className="flex justify-end items-center pt-3 px-4 py-3 bg-white lg:bg-slate-50 shadow-md lg:shadow-none dark:shadow-slate-700 dark:bg-slate-800 lg:dark:bg-slate-900">
+            <ThemeToggle />
+          </div>
         </div>
 
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-black dark:text-white flex flex-col items-center">

@@ -28,7 +28,7 @@ export default async function ProductForm({ product }: ProductFormProps) {
           type="text"
           name="name"
           required
-          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-700 text-black dark:text-white rounded-lg 
           border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
           placeholder-gray-500 dark:placeholder-gray-400"
           placeholder="Nombre del Producto"
@@ -50,7 +50,7 @@ export default async function ProductForm({ product }: ProductFormProps) {
           required
           min="0"
           step="0.01"
-          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-700 text-black dark:text-white rounded-lg 
           border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
           placeholder-gray-500 dark:placeholder-gray-400"
           placeholder="Precio del Producto"
@@ -69,7 +69,7 @@ export default async function ProductForm({ product }: ProductFormProps) {
           id="categoryId"
           name="categoryId"
           required
-          className="block w-full p-3 bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-lg 
+          className="block w-full p-3 bg-gray-100 dark:bg-gray-700 text-black dark:text-white rounded-lg 
           border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-500 
           placeholder-gray-500 dark:placeholder-gray-400"
           defaultValue={product?.categoryId || ""}
