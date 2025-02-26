@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 import Logo from "@/components/ui/Logo";
 import AdminRoute from "@/components/admin/AdminRoute";
 
@@ -10,7 +12,11 @@ const adminNavigation = {
   Cliente: [{ url: "/orders", text: "Órdenes Listas (Cliente)", blank: true }],
 };
 
-export default function AdminSidebar() {
+interface AdminSidebarProps {
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function AdminSidebar({ setIsSidebarOpen }: AdminSidebarProps) {
   return (
     <aside className="p-5 pb-10 lg:pb-0 -mt-10 lg:mt-0 rounded-lg bg-slate-50 dark:bg-slate-900">
       <div className="flex flex-col items-center">
@@ -29,7 +35,11 @@ export default function AdminSidebar() {
 
             <div className="bg-gray-50 dark:bg-gray-800 p-3 space-y-3">
               {links.map((link) => (
-                <AdminRoute key={link.url} link={link} />
+                <AdminRoute
+                  key={link.url}
+                  link={link}
+                  setIsSidebarOpen={setIsSidebarOpen}
+                />
               ))}
             </div>
           </div>

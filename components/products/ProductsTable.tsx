@@ -64,7 +64,7 @@ export default function ProductTable({ products }: ProductTableProps) {
           {products.map((product) => (
             <div
               key={product.id}
-              className="p-4 border rounded-lg shadow-md bg-white dark:bg-gray-900"
+              className="p-4 border dark:border-slate-700 dark:shadow-slate-700 rounded-lg shadow-md bg-white dark:bg-gray-900"
             >
               <p className="text-lg font-bold">{product.name}</p>
               <p className="text-sm text-gray-600 dark:text-gray-300">

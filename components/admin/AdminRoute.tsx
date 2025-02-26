@@ -1,5 +1,7 @@
 "use client";
 
+import { Dispatch, SetStateAction } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,9 +11,13 @@ type AdminRouteProps = {
     text: string;
     blank: boolean;
   };
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function AdminRoute({ link }: AdminRouteProps) {
+export default function AdminRoute({
+  link,
+  setIsSidebarOpen,
+}: AdminRouteProps) {
   const pathname = usePathname();
   const isActive = pathname.startsWith(link.url);
 
@@ -19,6 +25,7 @@ export default function AdminRoute({ link }: AdminRouteProps) {
     <Link
       href={link.url}
       target={link.blank ? "_blank" : ""}
+      onClick={() => setIsSidebarOpen(false)}
       aria-current={isActive ? "page" : undefined}
       className={`flex items-center font-bold text-lg px-4 py-3 border-t border-b
         transition-all duration-300 ease-in-out rounded-lg dark:border-slate-500

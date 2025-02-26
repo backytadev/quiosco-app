@@ -48,8 +48,12 @@ export default function RootLayout({
         z-50 lg:relative lg:translate-x-0 lg:w-72 lg:block overflow-y-auto overflow-x-hidden"
       >
         {/* Close button on mobile */}
+
         <div className="flex justify-end p-4 lg:hidden">
-          <label htmlFor="menu-toggle" className="cursor-pointer text-2xl">
+          <label
+            htmlFor="menu-toggle"
+            className="cursor-pointer text-2xl text-black dark:text-white"
+          >
             ✖️
           </label>
         </div>
