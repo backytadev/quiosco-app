@@ -31,12 +31,13 @@ export default async function OrderSidebar() {
         {categories.map((category) => (
           <CategoryIcon key={category.id} category={category} />
         ))}
+
         <a
           href="/admin/orders"
           className="flex lg:hidden items-center justify-center gap-3 font-semibold text-lg px-5 py-3 mt-6 
-    bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-lg shadow-lg 
-    transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl 
-    focus:ring-2 focus:ring-amber-400 focus:outline-none"
+          bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-lg shadow-lg 
+          transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl 
+          focus:ring-2 focus:ring-amber-400 focus:outline-none"
         >
           <span className="text-center flex justify-center items-center">
             <CookingPot className="w-10 h-10 opacity-90 " /> Ver las órdenes
