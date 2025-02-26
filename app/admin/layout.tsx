@@ -70,9 +70,9 @@ export default function AdminLayout({
       <div className="flex flex-1 pt-[60px] md:pt-0">
         {/* Sidebar */}
         <aside
-          className={`fixed lg:relative top-0 left-0 h-screen lg:h-auto w-72 bg-slate-50 dark:bg-slate-900 
+          className={`fixed lg:relative top-0 left-0 h-full lg:h-auto w-72 bg-slate-50 dark:bg-slate-900 
          text-black dark:text-white border-r border-gray-300 dark:border-gray-700 
-         overflow-y-auto transition-transform duration-300 ease-in-out z-50 
+         overflow-y-auto transition-transform duration-300 ease-in-out z-50
          ${
            isSidebarOpen
              ? "translate-x-0"

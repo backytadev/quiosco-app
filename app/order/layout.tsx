@@ -43,7 +43,7 @@ export default function RootLayout({
 
       {/* Sidebar */}
       <aside
-        className="fixed top-0 left-0 w-72 h-screen lg:h-auto bg-slate-50 dark:bg-slate-900 shadow-lg 
+        className="fixed top-0 left-0 w-72 h-full lg:h-auto bg-slate-50 dark:bg-slate-900 shadow-lg 
         -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out 
         z-50 lg:relative lg:translate-x-0 lg:w-72 lg:block overflow-y-auto overflow-x-hidden"
       >

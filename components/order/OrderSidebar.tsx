@@ -14,7 +14,7 @@ export default async function OrderSidebar() {
   return (
     <aside
       className="w-72 text-black dark:text-white border-r border-gray-300 dark:border-gray-700 
-      sticky top-0 h-auto overflow-y-auto transition-all duration-300"
+      sticky top-0 h-auto overflow-y-auto transition-all duration-300 pb-5"
     >
       <div className="p-5 border-b border-gray-300 dark:border-gray-700">
         <div className="hidden lg:flex justify-end items-center -mr-4 -mt-1 bg-white lg:bg-slate-50 shadow-md lg:shadow-none dark:shadow-slate-700 dark:bg-slate-800 lg:dark:bg-slate-900">
