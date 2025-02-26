@@ -31,7 +31,7 @@ export default async function EditProductPage({
 
   return (
     <>
-      <div className="mt-1 md:mt-5 lg:mt-10">
+      <div className="mt-0 md:mt-5 lg:mt-10">
         <Heading>Editar Producto: {product.name}</Heading>
       </div>
 

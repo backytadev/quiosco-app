@@ -20,7 +20,9 @@ export default async function OrderSidebar() {
         <div className="hidden lg:flex justify-end items-center -mr-4 -mt-1 bg-white lg:bg-slate-50 shadow-md lg:shadow-none dark:shadow-slate-700 dark:bg-slate-800 lg:dark:bg-slate-900">
           <ThemeToggle />
         </div>
-        <Logo />
+        <div className="-mt-10 lg:mt-0">
+          <Logo />
+        </div>
       </div>
 
       <nav className="my-5 flex flex-col space-y-2 pl-4 pr-6">

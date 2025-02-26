@@ -52,7 +52,7 @@ export default async function ProductsPage({
 
   return (
     <div className="space-y-6">
-      <div className="mt-1 md:mt-5 lg:mt-10">
+      <div className="mt-0 md:mt-5 lg:mt-10">
         <Heading>Administrar Productos</Heading>
       </div>
 
@@ -64,7 +64,7 @@ export default async function ProductsPage({
           Crear Producto
         </Link>
 
-        <div className="w-full md:w-auto">
+        <div className="w-full z-10 md:w-auto">
           <ProductoSearchForm />
         </div>
       </div>

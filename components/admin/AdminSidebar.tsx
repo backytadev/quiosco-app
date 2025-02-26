@@ -12,7 +12,7 @@ const adminNavigation = {
 
 export default function AdminSidebar() {
   return (
-    <aside className="p-5 rounded-lg bg-slate-50 dark:bg-slate-900">
+    <aside className="p-5 -mt-10 lg:mt-0 rounded-lg bg-slate-50 dark:bg-slate-900">
       <div className="flex flex-col items-center">
         <Logo />
         <p className="mt-6 uppercase font-bold text-sm text-gray-600 dark:text-gray-300">

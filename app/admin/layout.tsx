@@ -36,7 +36,7 @@ export default function AdminLayout({
     <div className="min-h-screen flex flex-col">
       {/* Fixed Header */}
       <div
-        className="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 
+        className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 
       backdrop-blur-md shadow-md md:shadow-none border-b md:border-none border-gray-200 dark:border-gray-800"
       >
         <div className="flex justify-end items-center pt-3 px-4 py-3 bg-white lg:bg-slate-50 shadow-md lg:shadow-none dark:shadow-slate-700 dark:bg-slate-800 lg:dark:bg-slate-900">
