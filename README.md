@@ -36,13 +36,19 @@ npm i or pnpm i
 
 3. Clone the `.env.template` and change it to `.env` and configure its environment variables.
 
-4. Raise the server dev mode
+4. Raise the DB development, executing the command
+
+```
+docker compose up -d
+```
+
+5. Raise the server dev mode
 
 ```
 npm run dev or pnpm run dev
 ```
 
-5. Rebuild the database in development mode with the seed
+6. Rebuild the database in development mode with the seed
 
 ```
  pnpm prisma db seed or npx prisma db seed
