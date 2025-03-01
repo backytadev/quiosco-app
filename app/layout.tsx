@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quiosco Fresh Coffee - App",
-  description: "Quiosco de comida rápida y postres + Punto de venta.",
+  title: "Quiosco Fresh Coffee - Gestión Completa de Pedidos",
+  description:
+    "Sistema integral para negocios de comida rápida. Recibe pedidos, envíalos a cocina y gestiona su entrega desde un panel de comida terminada. Optimiza tu flujo de trabajo y mejora la experiencia del cliente.",
 };
 
 export default function RootLayout({
@@ -32,16 +33,16 @@ export default function RootLayout({
           rel="icon"
           type="image/svg"
           sizes="32x32"
-          href="/logo-light.svg"
+          href="/favicon/favicon-32x32.png"
         />
         <link
           rel="icon"
           type="image/svg"
           sizes="16x16"
-          href="/logo-light.svg"
+          href="/favicon/favicon-16x16.png"
         />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
 
       <body
