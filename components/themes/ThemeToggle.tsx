@@ -5,13 +5,11 @@ import { ThemeContext } from "@/components/themes/ThemeProvider";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
 export default function ThemeToggle() {
-  const themeContext = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  if (!themeContext) {
+  if (!theme) {
     return null;
   }
-
-  const { theme, toggleTheme } = themeContext;
 
   return (
     <button

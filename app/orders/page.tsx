@@ -2,12 +2,17 @@
 
 import { useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  ClipboardDocumentListIcon,
+  BuildingStorefrontIcon,
+} from "@heroicons/react/24/solid";
 
 import { OrderWithProducts } from "@/src/types";
 
 import Logo from "@/components/ui/Logo";
 import ThemeToggle from "@/components/themes/ThemeToggle";
 import LatestOrderItem from "@/components/order/LatestOrderItem";
+import Link from "next/link";
 
 const fetchCompletedOrders = async () => {
   const res = await fetch(`/orders/api`);
@@ -45,7 +50,7 @@ export default function OrdersPage() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col items-center justify-center py-14">
+      <div className="flex flex-col items-center justify-center py-14 min-h-screen">
         <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
         <p className="text-center text-xl font-bold italic mt-4">
           Cargando órdenes listas...
@@ -85,7 +90,7 @@ export default function OrdersPage() {
           >
             <button
               type="submit"
-              className="bg-amber-500 hover:bg-amber-600 text-white text-lg md:text-xl font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-4 focus:ring-amber-300 dark:focus:ring-amber-600"
+              className="bg-amber-500 hover:bg-amber-600 text-white text-lg md:text-xl font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform md:hover:scale-105 focus:ring-4 focus:ring-amber-300 dark:focus:ring-amber-600"
             >
               Actualizar Órdenes
             </button>
@@ -98,10 +103,28 @@ export default function OrdersPage() {
               ))}
             </div>
           ) : (
-            <p className="text-center my-10 text-lg text-gray-700 dark:text-gray-300">
-              No hay órdenes listas
+            <p className="text-center my-10 text-lg text-gray-700 dark:text-gray-300 font-medium">
+              No hay órdenes listas.
             </p>
           )}
+
+          <div className="flex flex-col sm:flex-row gap-4 mt-10 md:hidden">
+            <Link
+              href="/admin/orders"
+              className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white text-base md:text-lg font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-300 ease-in-out transform focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-600"
+            >
+              <ClipboardDocumentListIcon className="w-6 h-6" />
+              <span>Panel Administrativo</span>
+            </Link>
+
+            <Link
+              href="/order/cafe"
+              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white text-base md:text-lg font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-300 ease-in-out transform focus:ring-4 focus:ring-green-300 dark:focus:ring-green-600"
+            >
+              <BuildingStorefrontIcon className="w-6 h-6" />
+              <span>Volver a Quiosco</span>
+            </Link>
+          </div>
         </div>
       </>
     );

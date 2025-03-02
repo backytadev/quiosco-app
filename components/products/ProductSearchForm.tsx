@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { searchSchema } from "@/src/schema";
 
-export default function ProductoSearchForm() {
+export default function ProductSearchForm() {
   const router = useRouter();
 
   const handleSearchForm = (formData: FormData) => {
@@ -41,7 +41,7 @@ export default function ProductoSearchForm() {
       <input
         type="submit"
         value="Buscar"
-        className="border border-indigo-600 bg-indigo-600 hover:bg-indigo-700 text-white p-2 uppercase font-bold cursor-pointer rounded-r-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+        className="border border-indigo-600 bg-indigo-600 hover:bg-indigo-700 text-white p-2 uppercase font-bold cursor-pointer rounded-r-lg transition-all duration-300 ease-in-out transform md:hover:scale-105 hover:shadow-lg text-base"
       />
     </form>
   );

@@ -40,7 +40,7 @@ export default function OrderPage() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col items-center justify-center py-8">
+      <div className="flex flex-col items-center justify-center py-8 min-h-screen">
         <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
         <p className="text-center text-xl font-bold italic mt-4">
           Cargando productos...

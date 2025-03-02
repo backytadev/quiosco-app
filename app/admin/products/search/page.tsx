@@ -2,7 +2,7 @@ import { prisma } from "@/src/lib/prisma";
 
 import Heading from "@/components/ui/Heading";
 import ProductTable from "@/components/products/ProductsTable";
-import ProductoSearchForm from "@/components/products/ProductoSearchForm";
+import ProductSearchForm from "@/components/products/ProductSearchForm";
 
 async function searchProducts(searchTerms: string) {
   const products = await prisma.product.findMany({
@@ -33,13 +33,15 @@ export default async function SearchPage({
       <Heading>Resultados de búsqueda: {search}</Heading>
 
       <div className="flex flex-col lg:flex-row lg:justify-end gap-5">
-        <ProductoSearchForm />
+        <ProductSearchForm />
       </div>
 
       {products.length ? (
         <ProductTable products={products} />
       ) : (
-        <p className="text-center text-lg">No hay resultados</p>
+        <p className="text-center text-lg mt-10 font-medium">
+          No hay resultados.
+        </p>
       )}
     </>
   );

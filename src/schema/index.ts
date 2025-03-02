@@ -1,8 +1,14 @@
 import { z } from "zod";
 
 export const OrderSchema = z.object({
-  name: z.string().min(1, "El nombre es obligatorio"),
-  total: z.number().min(1, "El pedido esta vació"),
+  name: z
+    .string()
+    .min(1, "El nombre es obligatorio")
+    .regex(
+      /^[A-Za-záéíóúÁÉÍÓÚñÑ]+$/,
+      "El nombre solo debe contener letras, sin espacios en blanco"
+    ),
+  total: z.number().min(1, "El pedido está vacío"),
   order: z.array(
     z.object({
       id: z.number(),

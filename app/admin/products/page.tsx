@@ -6,7 +6,7 @@ import { prisma } from "@/src/lib/prisma";
 import Heading from "@/components/ui/Heading";
 import ProductTable from "@/components/products/ProductsTable";
 import ProductsPagination from "@/components/products/ProductsPagination";
-import ProductoSearchForm from "@/components/products/ProductoSearchForm";
+import ProductSearchForm from "@/components/products/ProductSearchForm";
 
 async function productCount() {
   return await prisma.product.count();
@@ -59,13 +59,13 @@ export default async function ProductsPage({
       <div className="grid gap-4 md:flex md:items-center md:justify-between border dark:border-slate-700 bg-slate-50 dark:bg-gray-800 p-4 rounded-lg shadow-md">
         <Link
           href={`/admin/products/new`}
-          className="bg-amber-500 hover:bg-amber-600 text-white text-lg px-6 py-2 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-center md:w-auto"
+          className="bg-amber-500 hover:bg-amber-600 text-white text-base md:text-base px-6 py-2 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform md:hover:scale-105 text-center md:w-auto uppercase"
         >
           Crear Producto
         </Link>
 
         <div className="w-full z-10 md:w-auto">
-          <ProductoSearchForm />
+          <ProductSearchForm />
         </div>
       </div>
 

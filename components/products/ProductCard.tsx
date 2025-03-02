@@ -13,8 +13,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div
-      className="border h-full dark:border-slate-700 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden 
-      transition-transform duration-300 hover:scale-105"
+      className="border h-full dark:border-slate-700 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg dark:shadow-slate-700 transition-all overflow-hidden 
+      duration-300 ease-in-out md:hover:scale-105"
     >
       <Image
         width={400}

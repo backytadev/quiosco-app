@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import { OrderSchema } from "@/src/schema";
@@ -12,13 +12,20 @@ import ProductoDetails from "@/components/order/ProductoDetails";
 export default function OrderSummary() {
   const order = useStore((state) => state.order);
   const clearOrder = useStore((state) => state.clearOrder);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const total = useMemo(
     () => order.reduce((acc, item) => acc + item.quantity * item.price, 0),
     [order]
   );
 
-  const handleCreateOrder = async (formData: FormData) => {
+  const handleCreateOrder = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+
     const data = {
       name: formData.get("name"),
       total,
@@ -29,17 +36,28 @@ export default function OrderSummary() {
     const result = OrderSchema.safeParse(data);
     if (!result.success) {
       result.error.issues.forEach((issue) => toast.error(issue.message));
+      setIsSubmitting(false);
       return;
     }
 
-    //* Server validation using same schema (send validation errors to server, and return to client for rendering)
-    const response = await createOrder(data);
-    if (response?.errors) {
-      response.errors.forEach((issue) => toast.error(issue.message));
-    }
+    try {
+      //* Server validation
+      const response = await createOrder(data);
+      if (response?.errors) {
+        response.errors.forEach((issue) => toast.error(issue.message));
+        setIsSubmitting(false);
+        return;
+      }
 
-    toast.success("Pedido realizado correctamente");
-    clearOrder();
+      toast.success("Pedido realizado correctamente");
+      clearOrder();
+      if (nameRef.current) nameRef.current.value = "";
+    } catch (error) {
+      console.error(error);
+      toast.error("Hubo un error al procesar el pedido:");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -67,19 +85,27 @@ export default function OrderSummary() {
         </span>
       </p>
 
-      <form className="w-full mt-8 space-y-5" action={handleCreateOrder}>
+      <form className="w-full mt-8 space-y-5" onSubmit={handleCreateOrder}>
         <input
+          ref={nameRef}
           type="text"
           placeholder="Tu nombre"
           className="bg-gray-100 dark:bg-slate-800 border border-gray-300 dark:border-gray-700 p-3 w-full rounded-md text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-amber-400 transition-all"
           name="name"
         />
 
-        <input
+        <button
           type="submit"
-          className="py-3 rounded-md uppercase text-white bg-amber-500 hover:bg-amber-600 dark:bg-amber-400 hover:dark:bg-amber-500 transition-all duration-300 ease-in-out w-full text-center cursor-pointer font-bold shadow-md"
-          value="Confirmar Pedido"
-        />
+          disabled={isSubmitting}
+          className={`py-3 rounded-md uppercase text-white font-bold shadow-md w-full text-center transition-all duration-300 ease-in-out cursor-pointer
+            ${
+              isSubmitting
+                ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
+                : "bg-amber-500 hover:bg-amber-600 dark:bg-amber-500 hover:dark:bg-amber-600"
+            }`}
+        >
+          {isSubmitting ? "Generando pedido..." : "Confirmar Pedido"}
+        </button>
       </form>
     </aside>
   );

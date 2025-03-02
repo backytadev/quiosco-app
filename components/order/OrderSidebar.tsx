@@ -1,17 +1,48 @@
-import { prisma } from "@/src/lib/prisma";
+"use client";
+
+import Link from "next/link";
+import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
+
+import { Category } from "@prisma/client";
 
 import Logo from "@/components/ui/Logo";
 import CategoryIcon from "@/components/ui/CategoryIcon";
 import ThemeToggle from "@/components/themes/ThemeToggle";
+import { useQuery } from "@tanstack/react-query";
 
-import { CookingPot } from "lucide-react";
+const fetchCategories = async () => {
+  const response = await fetch("/order/categories/api");
+  if (!response.ok) throw new Error("Error fetching categories");
+  const data = await response.json();
+  return data;
+};
 
-async function getCategories() {
-  return await prisma.category.findMany();
-}
+export default function OrderSidebar() {
+  const {
+    data: categories,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+  });
 
-export default async function OrderSidebar() {
-  const categories = await getCategories();
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center justify-center py-8 min-h-screen">
+        <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
+        <p className="text-center text-xl font-bold italic mt-4">
+          Cargando categorías...
+        </p>
+      </div>
+    );
+
+  if (error)
+    return (
+      <p className="text-center py-8 text-xl font-bold italic text-red-500 min-h-screen">
+        Error al cargar categorías.
+      </p>
+    );
 
   return (
     <aside
@@ -28,11 +59,13 @@ export default async function OrderSidebar() {
       </div>
 
       <nav className="my-5 flex flex-col space-y-2 pl-4 pr-6">
-        {categories.map((category) => (
-          <CategoryIcon key={category.id} category={category} />
+        {categories.map((category: Category) => (
+          <label key={category.id} className="cursor-pointer">
+            <CategoryIcon category={category} />
+          </label>
         ))}
 
-        <a
+        <Link
           href="/admin/orders"
           className="flex lg:hidden items-center justify-center gap-3 font-semibold text-lg px-5 py-3 mt-6 
           bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-lg shadow-lg 
@@ -40,10 +73,10 @@ export default async function OrderSidebar() {
           focus:ring-2 focus:ring-amber-400 focus:outline-none"
         >
           <span className="text-center flex justify-center items-center">
-            <CookingPot className="w-10 h-10 opacity-90 " /> Ver las órdenes
-            (Cocina)
+            <ClipboardDocumentListIcon className="w-10 h-10 opacity-90 " /> Ver
+            las órdenes (Cocina)
           </span>
-        </a>
+        </Link>
       </nav>
     </aside>
   );

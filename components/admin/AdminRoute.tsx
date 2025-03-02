@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,10 +21,23 @@ export default function AdminRoute({
   const pathname = usePathname();
   const isActive = pathname.startsWith(link.url);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
     <Link
       href={link.url}
-      target={link.blank ? "_blank" : ""}
+      target={isMobile ? "" : link.blank ? "_blank" : ""}
       onClick={() => setIsSidebarOpen(false)}
       aria-current={isActive ? "page" : undefined}
       className={`flex items-center font-bold text-lg px-4 py-3 border-t border-b

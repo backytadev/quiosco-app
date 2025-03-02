@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { Menu, X } from "lucide-react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import ThemeToggle from "@/components/themes/ThemeToggle";
 import AdminSidebar from "@/components/admin/AdminSidebar";
@@ -49,7 +49,7 @@ export default function AdminLayout({
             backdrop-blur-md dark:hover:ring-slate-400 hover:ring-slate-800 hover:scale-110 pointer-events-auto rounded-md"
               onClick={() => setIsSidebarOpen(true)}
             >
-              <Menu className="text-black dark:text-white" />
+              <Bars3Icon className="text-black dark:text-white" />
             </button>
 
             {/* Theme toggle */}
@@ -84,7 +84,7 @@ export default function AdminLayout({
               className="p-2 bg-slate-200 dark:bg-slate-800 rounded-full"
               onClick={() => setIsSidebarOpen(false)}
             >
-              <X className="text-black dark:text-white" />
+              <XMarkIcon className="text-black dark:text-white w-[2rem]" />
             </button>
           </div>
 

@@ -3,8 +3,9 @@
 import { useState } from "react";
 
 import Image from "next/image";
-import { TbPhotoPlus } from "react-icons/tb";
+
 import { CldUploadWidget } from "next-cloudinary";
+import { PhotoIcon } from "@heroicons/react/24/outline";
 
 import { getImagePath } from "@/src/utils";
 
@@ -42,10 +43,7 @@ export default function ImageUpload({ image }: { image: string | undefined }) {
             flex flex-col justify-center items-center gap-3 text-gray-600 dark:text-gray-300
             bg-gray-100 dark:bg-gray-700 rounded-lg shadow-md hover:ring-2 hover:ring-indigo-500"
           >
-            <TbPhotoPlus
-              size={50}
-              className="text-indigo-600 dark:text-indigo-400"
-            />
+            <PhotoIcon className="text-indigo-600 dark:text-indigo-400 w-[6rem] h-[10rem]" />
             <p className="text-lg font-medium">Agregar Imagen</p>
 
             {imageUrl && (

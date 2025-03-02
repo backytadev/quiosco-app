@@ -1,20 +1,39 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
+
+export const ThemeContext = createContext({
+  theme: "light",
+  toggleTheme: () => {},
+});
 
 export default function ThemeProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") || "light";
-    }
-    return "light";
-  });
+  const [theme, setTheme] = useState<"light" | "dark">();
 
+  // Obtener tema desde localStorage o sistema
   useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    setTheme(
+      savedTheme
+        ? (savedTheme as "light" | "dark")
+        : prefersDark
+        ? "dark"
+        : "light"
+    );
+  }, []);
+
+  // Aplicar la clase dark en el <html>
+  useEffect(() => {
+    if (!theme) return;
+
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -28,13 +47,8 @@ export default function ThemeProvider({
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: theme || "light", toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 }
-
-export const ThemeContext = React.createContext({
-  theme: "light",
-  toggleTheme: () => {},
-});

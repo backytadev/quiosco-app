@@ -1,5 +1,7 @@
 "use client";
 
+import { toast } from "react-toastify";
+
 import { Product } from "@prisma/client";
 import { useStore } from "@/src/store/store";
 
@@ -13,8 +15,11 @@ export default function AddProductButton({ product }: AddProductButtonProps) {
   return (
     <button
       type="button"
-      className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
-      onClick={() => addToOrder(product)}
+      className="bg-indigo-600 hover:bg-indigo-700 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer rounded-md"
+      onClick={() => {
+        addToOrder(product);
+        toast.success("Producto agregado correctamente");
+      }}
     >
       Agregar
     </button>

@@ -1,4 +1,5 @@
 import { prisma } from "@/src/lib/prisma";
+import { NextResponse } from "next/server";
 
 export async function GET(
   req: Request,
@@ -7,7 +8,7 @@ export async function GET(
   const category = (await params).category;
 
   if (!category) {
-    return Response.json({ error: "Categoría requerida" }, { status: 400 });
+    return NextResponse.json({ error: "Categoría requerida" }, { status: 400 });
   }
 
   try {
@@ -19,10 +20,10 @@ export async function GET(
       },
     });
 
-    return Response.json(products);
+    return NextResponse.json(products);
   } catch (error) {
     console.error("❌ Error obteniendo productos:", error);
-    return Response.json(
+    return NextResponse.json(
       { error: "Error obteniendo productos" },
       { status: 500 }
     );

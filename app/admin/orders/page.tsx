@@ -44,7 +44,7 @@ export default function Orders() {
 
   if (isLoading)
     return (
-      <div className="flex flex-col items-center justify-center py-14">
+      <div className="flex flex-col items-center justify-center py-14 min-h-screen">
         <div className="w-10 h-10 border-4 border-gray-300 border-t-amber-500 rounded-full animate-spin"></div>
         <p className="text-center text-xl font-bold italic mt-4">
           Cargando órdenes...
@@ -66,7 +66,7 @@ export default function Orders() {
       <form className="mt-5" action={handleRefresh}>
         <button
           type="submit"
-          className="bg-amber-500 hover:bg-amber-600 text-white text-lg font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 focus:ring-4 focus:ring-amber-300 dark:focus:ring-amber-600"
+          className="bg-amber-500 hover:bg-amber-600 text-white text-lg font-bold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform md:hover:scale-105 focus:ring-4 focus:ring-amber-300 dark:focus:ring-amber-600"
         >
           Actualizar Órdenes
         </button>
@@ -79,8 +79,8 @@ export default function Orders() {
           ))}
         </div>
       ) : (
-        <p className="text-center mt-10 text-lg text-gray-700 dark:text-gray-300">
-          No hay órdenes pendientes
+        <p className="text-center mt-10 text-lg text-gray-700 dark:text-gray-300 font-medium">
+          No hay órdenes pendientes.
         </p>
       )}
     </div>

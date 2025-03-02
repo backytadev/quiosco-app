@@ -54,7 +54,7 @@ export default function AddProductForm({
           className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 
           uppercase font-bold cursor-pointer transition-all duration-300 ease-in-out 
           rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 
-          disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled:opacity-50 disabled:cursor-not-allowed text-base"
           value="Registrar Producto"
         />
       </form>

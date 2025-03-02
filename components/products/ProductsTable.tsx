@@ -10,11 +10,9 @@ type ProductTableProps = {
 export default function ProductTable({ products }: ProductTableProps) {
   return (
     <div className="px-4 sm:px-6 lg:px-8 mt-5 mb-5">
-      {/* Título */}
       <p className="text-3xl text-center font-bold">Tabla de productos</p>
 
       <div className="mt-8">
-        {/* Para pantallas grandes: tabla */}
         <div className="hidden md:block bg-slate-50 dark:bg-slate-900 p-5 rounded-md shadow-md">
           <table className="min-w-full divide-y divide-gray-300">
             <thead>
@@ -59,7 +57,6 @@ export default function ProductTable({ products }: ProductTableProps) {
           </table>
         </div>
 
-        {/* Para móviles: Tarjetas */}
         <div className="md:hidden space-y-4">
           {products.map((product) => (
             <div
@@ -75,7 +72,7 @@ export default function ProductTable({ products }: ProductTableProps) {
               </p>
               <Link
                 href={`/admin/products/${product.id}/edit`}
-                className="mt-2 inline-block bg-indigo-600 text-white px-4 py-2 rounded-md text-sm"
+                className="mt-2 inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm"
               >
                 Editar
               </Link>
