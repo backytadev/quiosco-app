@@ -30,7 +30,9 @@ export default async function SearchPage({
 
   return (
     <>
-      <Heading>Resultados de búsqueda: {search}</Heading>
+      <div className="mt-0 md:mt-5 lg:mt-10">
+        <Heading>Resultados de búsqueda: {search}</Heading>
+      </div>
 
       <div className="flex flex-col lg:flex-row lg:justify-end gap-5">
         <ProductSearchForm />
