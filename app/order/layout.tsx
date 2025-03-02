@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import ThemeToggle from "@/components/themes/ThemeToggle";
 import OrderSidebar from "@/components/order/OrderSidebar";
 import OrderSummary from "@/components/order/OrderSummary";
 import ToastNotification from "@/components/ui/ToastNotification";
@@ -42,7 +43,9 @@ export default function RootLayout({
             </button>
 
             {/* Theme toggle */}
-            {/* <ThemeToggle /> */}
+            <div className="block md:hidden">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>
