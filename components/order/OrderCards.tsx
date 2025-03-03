@@ -1,4 +1,4 @@
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import { formatCurrency } from "@/src/utils";
 import { OrderWithProducts } from "@/src/types";
@@ -12,12 +12,16 @@ type OrderCardProps = {
 
 export default function OrderCard({ order }: OrderCardProps) {
   const [isPending, startTransition] = useTransition();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const queryClient = useQueryClient();
 
   const handleCompleteOrder = async (formData: FormData) => {
+    setIsSubmitting(true);
+
     startTransition(async () => {
       await completeOrder(formData);
       queryClient.invalidateQueries({ queryKey: ["orders"] });
+      setIsSubmitting(false);
     });
   };
 
@@ -63,10 +67,12 @@ export default function OrderCard({ order }: OrderCardProps) {
         <input type="hidden" value={order.id} name="order_id" />
         <button
           type="submit"
-          disabled={isPending}
+          disabled={isPending || isSubmitting}
           className="w-full p-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white text-base md:text-lg font-bold uppercase shadow-md hover:shadow-lg dark:hover:shadow-gray-900 transition-all duration-300 ease-in-out transform md:hover:scale-105 disabled:bg-gray-400 dark:disabled:bg-gray-600"
         >
-          {isPending ? "Procesando..." : "Marcar Orden Completada"}
+          {isPending || isSubmitting
+            ? "Procesando..."
+            : "Marcar Orden Completada"}
         </button>
       </form>
     </section>

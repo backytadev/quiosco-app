@@ -11,6 +11,7 @@ export default function ToastNotification() {
       closeOnClick
       draggable
       draggableDirection="x"
+      draggablePercent={30}
     />
   );
 }
