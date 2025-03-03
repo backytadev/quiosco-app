@@ -21,7 +21,9 @@ export default function OrderCard({ order }: OrderCardProps) {
     startTransition(async () => {
       await completeOrder(formData);
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-      setIsSubmitting(false);
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 1000);
     });
   };
 
