@@ -21,11 +21,11 @@ importers:
         specifier: ^5.66.9
         version: 5.91.1(@tanstack/react-query@5.90.12(react@19.2.3))(react@19.2.3)
       next:
-        specifier: 15.1.7
-        version: 15.1.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 15.1.11
+        version: 15.1.11(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-cloudinary:
         specifier: ^6.16.0
-        version: 6.17.5(next@15.1.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 6.17.5(next@15.1.11(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       react:
         specifier: ^19.0.0
         version: 19.2.3
@@ -338,8 +338,8 @@ packages:
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
 
-  '@next/env@15.1.7':
-    resolution: {integrity: sha512-d9jnRrkuOH7Mhi+LHav2XW91HOgTAWHxjMPkXMGBc9B2b7614P7kjt8tAplRvJpbSt4nbO1lugcT/kAaWzjlLQ==}
+  '@next/env@15.1.11':
+    resolution: {integrity: sha512-yp++FVldfLglEG5LoS2rXhGypPyoSOyY0kxZQJ2vnlYJeP8o318t5DrDu5Tqzr03qAhDWllAID/kOCsXNLcwKw==}
 
   '@next/eslint-plugin-next@15.1.7':
     resolution: {integrity: sha512-kRP7RjSxfTO13NE317ek3mSGzoZlI33nc/i5hs1KaWpK+egs85xg0DJ4p32QEiHnR0mVjuUfhRIun7awqfL7pQ==}
@@ -3884,15 +3884,15 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next-cloudinary@6.17.5(next@15.1.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3):
+  next-cloudinary@6.17.5(next@15.1.11(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3):
     dependencies:
       '@cloudinary-util/types': 1.5.10
       '@cloudinary-util/url-loader': 5.10.4
       '@cloudinary-util/util': 4.0.0
-      next: 15.1.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 15.1.11(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
 
-  next@15.1.7(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next@15.1.11(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@next/env': 15.1.11
       '@swc/counter': 0.1.3
