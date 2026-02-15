@@ -32,7 +32,7 @@ export default function ProductTable({ products }: ProductTableProps) {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {products.map((product) => (
+              {products.map((product: ProductsWithCategory[number]) => (
                 <tr key={product.id}>
                   <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 dark:text-white sm:pl-0">
                     {product.name}
@@ -58,7 +58,7 @@ export default function ProductTable({ products }: ProductTableProps) {
         </div>
 
         <div className="md:hidden space-y-4">
-          {products.map((product) => (
+          {products.map((product: ProductsWithCategory[number]) => (
             <div
               key={product.id}
               className="p-4 border dark:border-slate-700 dark:shadow-slate-700 rounded-lg shadow-md bg-white dark:bg-gray-900"

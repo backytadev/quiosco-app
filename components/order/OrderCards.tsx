@@ -1,10 +1,10 @@
-import { useState, useTransition } from "react";
+import { useState, useTransition } from 'react';
 
-import { formatCurrency } from "@/src/utils";
-import { OrderWithProducts } from "@/src/types";
+import { formatCurrency } from '@/src/utils';
+import { OrderWithProducts } from '@/src/types';
 
-import { useQueryClient } from "@tanstack/react-query";
-import { completeOrder } from "@/actions/complete-order-action";
+import { useQueryClient } from '@tanstack/react-query';
+import { completeOrder } from '@/actions/complete-order-action';
 
 type OrderCardProps = {
   order: OrderWithProducts;
@@ -20,7 +20,7 @@ export default function OrderCard({ order }: OrderCardProps) {
 
     startTransition(async () => {
       await completeOrder(formData);
-      queryClient.invalidateQueries({ queryKey: ["orders"] });
+      queryClient.invalidateQueries({ queryKey: ['orders'] });
       setTimeout(() => {
         setIsSubmitting(false);
       }, 1000);
@@ -39,21 +39,23 @@ export default function OrderCard({ order }: OrderCardProps) {
         Productos Ordenados:
       </p>
       <dl className="mt-4 space-y-4">
-        {order.orderProducts.map((product) => (
-          <div
-            key={product.productId}
-            className="flex items-center gap-3 border-t border-gray-200 dark:border-gray-700 pt-4"
-          >
-            <dt className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-              <span className="font-bold text-gray-800 dark:text-gray-200">
-                ({product.quantity}) {""}
-              </span>
-            </dt>
-            <dd className="text-sm font-medium text-gray-900 dark:text-white">
-              {product.product.name}
-            </dd>
-          </div>
-        ))}
+        {order.orderProducts.map(
+          (product: OrderWithProducts['orderProducts'][number]) => (
+            <div
+              key={product.productId}
+              className="flex items-center gap-3 border-t border-gray-200 dark:border-gray-700 pt-4"
+            >
+              <dt className="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                <span className="font-bold text-gray-800 dark:text-gray-200">
+                  ({product.quantity}) {''}
+                </span>
+              </dt>
+              <dd className="text-sm font-medium text-gray-900 dark:text-white">
+                {product.product.name}
+              </dd>
+            </div>
+          )
+        )}
 
         <div className="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4">
           <dt className="text-lg font-medium text-gray-900 dark:text-gray-300">
@@ -73,8 +75,8 @@ export default function OrderCard({ order }: OrderCardProps) {
           className="w-full p-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white text-base md:text-lg font-bold uppercase shadow-md hover:shadow-lg dark:hover:shadow-gray-900 transition-all duration-300 ease-in-out transform md:hover:scale-105 disabled:bg-gray-400 dark:disabled:bg-gray-600"
         >
           {isPending || isSubmitting
-            ? "Procesando..."
-            : "Marcar Orden Completada"}
+            ? 'Procesando...'
+            : 'Marcar Orden Completada'}
         </button>
       </form>
     </section>

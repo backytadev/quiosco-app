@@ -77,7 +77,7 @@ export default async function ProductForm({ product }: ProductFormProps) {
           <option value="" disabled>
             -- Seleccione --
           </option>
-          {categories.map((category) => (
+          {categories.map((category: { id: number; name: string }) => (
             <option key={category.id} value={category.id}>
               {category.name}
             </option>
