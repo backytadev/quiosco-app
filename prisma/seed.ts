@@ -1,19 +1,19 @@
-import { PrismaClient } from "../app/generated/prisma";
-import { categories } from "./data/categories";
-import { products } from "./data/products";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from '@prisma/client';
+import { categories } from './data/categories';
+import { products } from './data/products';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 const connectionString = `${process.env.DATABASE_URL}`;
 const adapter = new PrismaPg({ connectionString });
 
 const prisma = new PrismaClient({
   adapter,
-  log: ["query"],
+  log: ['query'],
 });
 
 async function main() {
   try {
-    console.log("🔄 Limpiando base de datos...");
+    console.log('🔄 Limpiando base de datos...');
 
     await prisma.$transaction([
       prisma.orderProducts.deleteMany(),
@@ -31,13 +31,13 @@ async function main() {
     );
 
     // Insertar nuevos datos
-    console.log("🌱 Insertando datos...");
+    console.log('🌱 Insertando datos...');
     await prisma.category.createMany({ data: categories });
     await prisma.product.createMany({ data: products });
 
-    console.log("✅ Seed ejecutado correctamente.");
+    console.log('✅ Seed ejecutado correctamente.');
   } catch (error) {
-    console.error("❌ Error en el seed:", error);
+    console.error('❌ Error en el seed:', error);
   } finally {
     await prisma.$disconnect();
   }
